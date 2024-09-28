@@ -26,18 +26,21 @@ function App() {
     },
     'Person 3': {
       'Day': [
-        { name: '12:00 PM', stepCount: 18, heartRate: 82, ruminating: 7, temperature: 36.9 },
-        { name: '01:00 PM', stepCount: 20, heartRate: 86, ruminating: 9, temperature: 37.2 },
+        { name: '12:00 PM', stepCount: 35, heartRate: 75, ruminating: 4, temperature: 36.0 },
+        { name: '01:00 PM', stepCount: 40, heartRate: 78, ruminating: 5, temperature: 36.2 },
       ],
       'Week': [
-        { name: 'Monday', stepCount: 100, heartRate: 84, ruminating: 11, temperature: 37.0 },
-        { name: 'Tuesday', stepCount: 105, heartRate: 89, ruminating: 14, temperature: 37.3 },
+        { name: 'Monday', stepCount: 80, heartRate: 76, ruminating: 8, temperature: 36.4 },
+        { name: 'Tuesday', stepCount: 110, heartRate: 80, ruminating: 10, temperature: 36.6 },
       ]
     },
   };
 
-  const [selectedPerson, setSelectedPerson] = useState('Person 1');
-  const [selectedTime, setSelectedTime] = useState('Day');
+  const personOptions = Object.keys(allData);
+  const timeOptions = ['Day', 'Week'];
+
+  const [selectedPerson, setSelectedPerson] = useState(personOptions[0]);
+  const [selectedTime, setSelectedTime] = useState(timeOptions[0]);
 
   const filteredData = allData[selectedPerson][selectedTime];
 
@@ -49,17 +52,22 @@ function App() {
           <div className="filter">
             <label htmlFor="person">Select Person</label>
             <select id="person" value={selectedPerson} onChange={(e) => setSelectedPerson(e.target.value)}>
-              <option value="Person 1">Person 1</option>
-              <option value="Person 2">Person 2</option>
-              <option value="Person 3">Person 3</option>
+              {personOptions.map((person, index) => (
+                <option key={index} value={person}>
+                  {person}
+                </option>
+              ))}
             </select>
           </div>
 
           <div className="filter">
             <label htmlFor="time">Select Time</label>
             <select id="time" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)}>
-              <option value="Day">Day</option>
-              <option value="Week">Week</option>
+              {timeOptions.map((time, index) => (
+                <option key={index} value={time}>
+                  {time}
+                </option>
+              ))}
             </select>
           </div>
         </div>
