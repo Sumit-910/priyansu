@@ -36,13 +36,13 @@ function App() {
     },
   };
 
-  const personOptions = Object.keys(allData);
-  const timeOptions = ['Day', 'Week'];
+  const personOptions = Object.keys(allData); // array for filter 1
+  const timeOptions = ['Day', 'Week']; // array for filter 2
 
-  const [selectedPerson, setSelectedPerson] = useState(personOptions[0]);
-  const [selectedTime, setSelectedTime] = useState(timeOptions[0]);
+  const [selectedPerson, setSelectedPerson] = useState(personOptions[0]); //value for filter 1
+  const [selectedTime, setSelectedTime] = useState(timeOptions[0]); //value for filter 2
 
-  const filteredData = allData[selectedPerson][selectedTime];
+  const filteredData = allData[selectedPerson][selectedTime]; // filtered data
 
   return (
     <div className="page">
